@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ProductCard from "../components/product-card";
+import Buttons from "../components/buttons";
 
 interface CardProps {
   id: number;
@@ -18,14 +19,19 @@ export default async function Shop() {
       {products.map((product: CardProps) => {
         const { id, image, title, category, price } = product;
         return (
-          <Link href={`/shop/${id}`} key={id}>
-            <ProductCard
-              image={image}
-              title={title}
-              category={category}
-              price={price}
-            />
-          </Link>
+          <div key={id} className="text-center group relative">
+            <Link href={`/shop/${id}`}>
+              <ProductCard
+                image={image}
+                title={title}
+                category={category}
+                price={price}
+              />
+            </Link>
+            <Buttons className="text-white bg-green-500 p-2 rounded transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute left-1/2 top-1/2">
+              Add to Cart
+            </Buttons>
+          </div>
         );
       })}
     </div>

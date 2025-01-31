@@ -12,7 +12,7 @@ export default function ProductCard({
   price,
 }: CardProps) {
   return (
-    <div className="relative shadow-custom-shadow p-4 rounded col-span-1 group hover:bg-gray-100">
+    <div className="shadow-custom-shadow p-4 rounded col-span-1 group hover:bg-gray-100">
       <div className="cursor-pointer flex flex-col items-center justify-between">
         <img
           className="w-[100px] h-[100px] object-contain"
@@ -24,11 +24,6 @@ export default function ProductCard({
           <span className="text-gray-400 text-sm">{category}</span>
           <span className="text-gray-400 text-sm">{price}</span>
         </div>
-      </div>
-      <div className="absolute top-1/2 left-1/2">
-        <button className="text-white p-2 rounded-full w-[50px] h-[50px] bg-blue-600 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          +
-        </button>
       </div>
     </div>
   );
