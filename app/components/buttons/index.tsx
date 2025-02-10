@@ -3,12 +3,12 @@ import { ReactNode } from "react";
 interface Prop {
   className: string;
   children: ReactNode;
-  handleClick: () => void;
+  onClick: () => void;
 }
 
-export default function Buttons({ children, className, handleClick }: Prop) {
+export default function Button({ children, className, onClick }: Prop) {
   return (
-    <button onClick={handleClick} className={className}>
+    <button onClick={onClick} className={className}>
       {children}
     </button>
   );

@@ -1,6 +1,6 @@
+import Button from "./buttons";
+import ProductCard from "./product-card";
 import Link from "next/link";
-import ProductCard from "../components/product-card";
-import Buttons from "../components/buttons";
 
 interface CardProps {
   id: number;
@@ -10,12 +10,11 @@ interface CardProps {
   price: number;
 }
 
-export default async function Shop() {
-  const data = await fetch("https://fakestoreapi.com/products");
+export default async function ProductList() {
+  const data = await fetch("https://fakestoreapi.com/products?limit=4");
   const products = await data.json();
-
   return (
-    <div className="p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 max-w-[1200px] m-auto">
+    <div className="p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
       {products.map((product: CardProps) => {
         const { id, image, title, category, price } = product;
         return (
@@ -28,9 +27,9 @@ export default async function Shop() {
                 price={price}
               />
             </Link>
-            <Buttons className="text-white bg-green-500 p-2 rounded transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute left-1/2 top-1/2">
+            <Button className="text-white bg-green-500 p-2 rounded transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute left-1/2 top-1/2">
               Add to Cart
-            </Buttons>
+            </Button>
           </div>
         );
       })}

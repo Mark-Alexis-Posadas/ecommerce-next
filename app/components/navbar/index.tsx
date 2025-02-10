@@ -6,7 +6,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex items-center gap-3 p-5">
+    <nav className="flex items-center gap-3 p-5 border-b border-slate-300 shadow-sm sticky top-0 z-10 bg-slate-50">
       <li
         className={`${
           pathname === "/" ? "text-green-500" : "text-gray-500"
