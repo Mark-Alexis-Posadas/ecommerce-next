@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Cart() {
   return (
-    <div className="bg-[rgba(0,0,0,0.4)] fixed w-full h-screen overflow-hidden z-20 top-0">
+    <div className="bg-[rgba(0,0,0,0.4)] fixed w-full h-screen overflow-hidden z-20 top-0 left-0 ">
       <div className="bg-white p-5 h-screen absolute top-00 bottom-0 right-0 w-[600px] flex flex-col justify-between">
         <div className="flex items-center justify-between border-b border-slate-3 pb-3">
           <h2 className="font-bold text-md">Cart</h2>
