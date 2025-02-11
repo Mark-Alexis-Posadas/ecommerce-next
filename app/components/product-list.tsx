@@ -19,7 +19,7 @@ export default async function ProductList({ limit }: ProductListProps) {
     `https://fakestoreapi.com/products${limit ? `?limit=${limit}` : ""}`
   );
   const products = await data.json();
-  console.log(products);
+
   return (
     <div className="p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
       {products.map((product: CardProps) => {
