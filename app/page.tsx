@@ -33,8 +33,8 @@ export default async function Home() {
         <Container>
           <SubHeading>Categories</SubHeading>
           <div className="grid grid-cols-2 gap-4">
-            {categories.map((category, index) => (
-              <Link href={`products/category/${category}`} key={uuidv4()}>
+            {categories.map((category: string[], index: number) => (
+              <Link href={`shop/category/${category}`} key={uuidv4()}>
                 <div
                   key={uuidv4()}
                   className={`min-h-[300px] ${
