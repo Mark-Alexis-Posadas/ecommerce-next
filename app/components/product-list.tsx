@@ -1,3 +1,5 @@
+"use client";
+import { useEffect, useState } from "react";
 import Button from "./buttons";
 import ProductCard from "./product-card";
 import Link from "next/link";
@@ -11,14 +13,33 @@ interface CardProps {
 }
 
 interface ProductListProps {
-  limit?: number; // Optional prop to control the limit of products to fetch
+  limit?: number;
+  category?: string | null;
 }
 
-export default async function ProductList({ limit }: ProductListProps) {
-  const data = await fetch(
-    `https://fakestoreapi.com/products${limit ? `?limit=${limit}` : ""}`
-  );
-  const products = await data.json();
+export default function ProductList({ limit, category }: ProductListProps) {
+  const [products, setProducts] = useState<CardProps[]>([]);
+  console.log(category);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        let url = `https://fakestoreapi.com/products${
+          limit ? `?limit=${limit}` : ""
+        }`;
+        if (category) {
+          url = `https://fakestoreapi.com/products/category/${category}`;
+        }
+        const response = await fetch(url);
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, [category, limit]);
 
   return (
     <div className="p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">

@@ -14,11 +14,11 @@ export default async function Home() {
   const categories = await data.json();
   return (
     <>
-      <Section>
+      {/* <Section>
         <Container>
           <BannerCarousel bannerData={bannerData} />
         </Container>
-      </Section>
+      </Section> */}
 
       <Section>
         <Container>
