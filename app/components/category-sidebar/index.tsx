@@ -1,25 +1,42 @@
 "use client";
 
-import { v4 as uuidv4 } from "uuid";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+interface CategorySidebarProps {
+  categories: string[]; // Assuming categories is an array of strings
+}
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: string; // category property
+  image: string;
+}
 
-export default function CategorySidebar({ categories }) {
+export default function CategorySidebar({ categories }: CategorySidebarProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const categoryName = searchParams.get("categoryName");
-  console.log(categoryName);
 
-  const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [active, setActive] = useState<number>(-1);
 
   // Fetch products on mount
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await fetch("https://fakestoreapi.com/products");
-      const productList = await response.json();
-      setProducts(productList);
+      try {
+        const response = await fetch("https://fakestoreapi.com/products");
+        const productList = await response.json();
+        setProducts(productList);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          console.log(error.message); // Now `error.message` is valid
+        } else {
+          console.log("An unknown error occurred");
+        }
+      }
     };
 
     fetchProducts();
@@ -36,7 +53,7 @@ export default function CategorySidebar({ categories }) {
       const activeIndex = categories.indexOf(categoryName);
       setActive(activeIndex);
     } else {
-      setFilteredProducts(products); // Show all products if no category is selected
+      setFilteredProducts(products);
     }
   }, [products, categoryName, categories]);
 
@@ -69,7 +86,7 @@ export default function CategorySidebar({ categories }) {
           All
         </li>
 
-        {categories.map((category, index) => (
+        {categories.map((category: string, index: number) => (
           <li
             key={category} // Use the category name as the key here
             className={`${
