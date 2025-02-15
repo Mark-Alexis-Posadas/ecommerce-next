@@ -19,7 +19,6 @@ interface ProductListProps {
 
 export default function ProductList({ limit, category }: ProductListProps) {
   const [products, setProducts] = useState<CardProps[]>([]);
-  console.log(category);
 
   useEffect(() => {
     const fetchProducts = async () => {

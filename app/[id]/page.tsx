@@ -4,6 +4,7 @@ export default async function FeaturedDetails({
   params: Promise<{ id: number }>;
 }) {
   const id = (await params).id;
+
   const data = await fetch(`https://fakestoreapi.com/products/${id}`);
   const singleProduct = await data.json();
   return (
