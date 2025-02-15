@@ -7,8 +7,14 @@ import CategorySidebar from "../category-sidebar";
 
 export default function Category() {
   const params = useParams();
-  const categoryName = params.categoryName;
-  const [categories, setCategories] = useState([]);
+  let categoryName = params.categoryName;
+
+  // Ensure categoryName is a string, or handle the case of a string array.
+  if (Array.isArray(categoryName)) {
+    categoryName = categoryName[0]; // Choose the first category if it's an array
+  }
+
+  const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -26,7 +32,7 @@ export default function Category() {
       <CategorySidebar categories={categories} />
       <div className="flex">
         <Suspense fallback={<Loading />}>
-          <ProductList category={categoryName} />
+          <ProductList category={categoryName || null} />
         </Suspense>
       </div>
     </div>

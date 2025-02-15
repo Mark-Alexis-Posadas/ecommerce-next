@@ -3,14 +3,14 @@
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 interface CategorySidebarProps {
-  categories: string[]; // Assuming categories is an array of strings
+  categories: string[];
 }
 interface Product {
   id: number;
   title: string;
   price: number;
   description: string;
-  category: string; // category property
+  category: string;
   image: string;
 }
 
@@ -32,7 +32,7 @@ export default function CategorySidebar({ categories }: CategorySidebarProps) {
         setProducts(productList);
       } catch (error: unknown) {
         if (error instanceof Error) {
-          console.log(error.message); // Now `error.message` is valid
+          console.log(error.message);
         } else {
           console.log("An unknown error occurred");
         }
@@ -42,7 +42,6 @@ export default function CategorySidebar({ categories }: CategorySidebarProps) {
     fetchProducts();
   }, []);
 
-  // Filter products based on categoryName from URL
   useEffect(() => {
     if (categoryName) {
       const filtered = products.filter(
