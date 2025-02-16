@@ -41,7 +41,7 @@ export default function ProductList({ limit, category }: ProductListProps) {
   }, [category, limit]);
 
   return (
-    <div className="p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 flex-1">
+    <div className="p-5 md:p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 flex-1">
       {products.map((product: CardProps) => {
         const { id, image, title, category, price } = product;
         return (
