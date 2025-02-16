@@ -2,17 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-interface CategorySidebarProps {
-  categories: string[];
-}
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-}
+import { CategorySidebarProps, Product } from "@/app/types/category-sidebar";
 
 export default function CategorySidebar({ categories }: CategorySidebarProps) {
   const router = useRouter();

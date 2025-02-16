@@ -3,19 +3,7 @@ import { useEffect, useState } from "react";
 import Button from "./buttons";
 import ProductCard from "./product-card";
 import Link from "next/link";
-
-interface CardProps {
-  id: number;
-  image: string;
-  title: string;
-  category: string;
-  price: number;
-}
-
-interface ProductListProps {
-  limit?: number;
-  category?: string | null;
-}
+import { CardProps, ProductListProps } from "../types/product-list";
 
 export default function ProductList({ limit, category }: ProductListProps) {
   const [products, setProducts] = useState<CardProps[]>([]);
