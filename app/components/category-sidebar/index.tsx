@@ -74,12 +74,12 @@ export default function CategorySidebar({ categories }: CategorySidebarProps) {
 
   return (
     <aside className="p-0 md:px-5 mb-5 md:mb-0">
-      <ul className="flex md:flex-col md:gap-0 items-center md:items-start gap-4">
+      <ul className="flex md:flex-col md:gap-3 items-center md:items-start gap-4">
         <li
           key="all"
           className={`${
             active === -1 ? "text-green-600" : "text-gray-600"
-          } my-2 cursor-pointer`}
+          } my-2 cursor-pointer transition-colors duration-200 ease-in-out hover:text-green-500`}
           onClick={() => handleFilterCategory("All", -1)}
         >
           All
@@ -87,10 +87,10 @@ export default function CategorySidebar({ categories }: CategorySidebarProps) {
 
         {categories.map((category: string, index: number) => (
           <li
-            key={category} // Use the category name as the key here
+            key={category}
             className={`${
               active === index ? "text-green-600" : "text-gray-600"
-            } my-2 cursor-pointer`}
+            } my-2 cursor-pointer transition-colors duration-200 ease-in-out hover:text-green-500`}
             onClick={() => handleFilterCategory(category, index)}
           >
             {category}
