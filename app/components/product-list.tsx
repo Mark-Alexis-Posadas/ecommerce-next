@@ -1,17 +1,14 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Button from "./buttons";
 import ProductCard from "./product-card";
 import Link from "next/link";
 import { CardProps, ProductListProps } from "../types/product-list";
+import MyContext from "../_context/my-context";
 
-export default function ProductList({
-  limit,
-  category,
-  cartProduct,
-  handleAddToCartProduct,
-}: ProductListProps) {
+export default function ProductList({ limit, category }: ProductListProps) {
   const [products, setProducts] = useState<CardProps[]>([]);
+  const { handleAddToCartProduct } = useContext(MyContext);
 
   useEffect(() => {
     const fetchProducts = async () => {

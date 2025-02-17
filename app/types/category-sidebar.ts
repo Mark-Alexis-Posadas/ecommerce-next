@@ -9,3 +9,10 @@ export interface Product {
   category: string;
   image: string;
 }
+
+export interface CartProduct {
+  title: string;
+  image: string;
+  category: string;
+  ratings: number;
+}
