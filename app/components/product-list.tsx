@@ -5,7 +5,12 @@ import ProductCard from "./product-card";
 import Link from "next/link";
 import { CardProps, ProductListProps } from "../types/product-list";
 
-export default function ProductList({ limit, category }: ProductListProps) {
+export default function ProductList({
+  limit,
+  category,
+  cartProduct,
+  handleAddToCartProduct,
+}: ProductListProps) {
   const [products, setProducts] = useState<CardProps[]>([]);
 
   useEffect(() => {
@@ -42,7 +47,10 @@ export default function ProductList({ limit, category }: ProductListProps) {
                 price={price}
               />
             </Link>
-            <Button className="text-white bg-green-500 p-2 rounded transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute left-1/2 top-1/2">
+            <Button
+              onClick={() => handleAddToCartProduct(product)}
+              className="text-white bg-green-500 p-2 rounded transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute left-1/2 top-1/2"
+            >
               Add to Cart
             </Button>
           </div>

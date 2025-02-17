@@ -1,10 +1,9 @@
 "use client";
-// import { Suspense, useEffect, useState } from "react";
+
 import { useParams } from "next/navigation";
-
 import ProductList from "../product-list";
-import CategorySidebar from "../category-sidebar";
 
+// import { Product } from "@/app/types/category-sidebar";
 export default function Category() {
   const params = useParams();
   let categoryName = params.categoryName;

@@ -10,7 +10,7 @@ export default function CategorySidebar({ categories }: CategorySidebarProps) {
   const categoryName = searchParams.get("categoryName");
 
   const [products, setProducts] = useState<Product[]>([]);
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  // const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [active, setActive] = useState<number>(-1);
 
   // Fetch products on mount
@@ -34,16 +34,17 @@ export default function CategorySidebar({ categories }: CategorySidebarProps) {
 
   useEffect(() => {
     if (categoryName) {
-      const filtered = products.filter(
-        (product) => product.category === categoryName
-      );
-      setFilteredProducts(filtered);
+      // const filtered = products.filter(
+      //   (product) => product.category === categoryName
+      // );
+      // setFilteredProducts(filtered);
 
       const activeIndex = categories.indexOf(categoryName);
       setActive(activeIndex);
-    } else {
-      setFilteredProducts(products);
     }
+    // } else {
+    //   setFilteredProducts(products);
+    // }
   }, [products, categoryName, categories]);
 
   // Handle category filter change
@@ -51,13 +52,13 @@ export default function CategorySidebar({ categories }: CategorySidebarProps) {
     setActive(index);
 
     if (categoryName === "All") {
-      setFilteredProducts(products);
+      // setFilteredProducts(products);
       router.push(`/shop`);
     } else {
-      const filtered = products.filter(
-        (product) => product.category === categoryName
-      );
-      setFilteredProducts(filtered);
+      // const filtered = products.filter(
+      //   (product) => product.category === categoryName
+      // );
+      // setFilteredProducts(filtered);
       router.push(`/shop/category/${categoryName}`);
     }
   };
